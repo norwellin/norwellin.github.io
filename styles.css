@@ -3,3 +3,9 @@
 
 /* Rose identity */
 .portrait-panel{background:#f0cedc}.portrait-panel:after{background:#b84b78}.portrait-monogram{color:#583647}.portrait-monogram span{color:#b84b78}#portrait-placeholder{color:#79596a}.portrait-caption{color:#70485e;background:linear-gradient(transparent,#e8b9cf)}.primary{background:#934260}.primary:hover{background:#78354e}
+
+.detail-content ul{padding-left:1.3em;margin:10px 0 18px;color:var(--muted);font-size:14px}.detail-content li{margin-bottom:9px}.detail-content p+p{margin-top:12px}
+
+.outcome p{margin:0}.outcome-title{font-size:1rem;line-height:1.5;margin:0 0 6px;color:var(--ink)}
+
+#portrait{position:absolute;inset:0;object-position:center 35%}

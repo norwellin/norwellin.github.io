@@ -5,10 +5,16 @@
   let language='zh';
   try { language=localStorage.getItem('portfolio-language')==='en'?'en':'zh'; } catch {}
   const text=value=>value?.[language] || '';
+  function detailContent(project,c){
+    if(project.sections){
+      return project.sections.map(section=>`<h4>${esc(text(section.title))}</h4>${(section.paragraphs||[]).map(p=>`<p>${esc(text(p))}</p>`).join('')}${section.items?`<ul>${section.items.map(item=>`<li>${esc(text(item))}</li>`).join('')}</ul>`:''}`).join('');
+    }
+    return `<h4>${c.background}</h4><p>${esc(text(project.background))}</p><h4>${c.result}</h4><p>${esc(text(project.result))}</p><h4>${c.contribution}</h4><p>${esc(project.contribution?text(project.contribution):c.teamPending)}</p>`;
+  }
   function card(project,feature){
     const c=COPY[language];
     const visual=project.image?`<img src="./assets/${esc(project.image)}" alt="${esc(text(project.title))}" loading="lazy" width="1000" height="650">`:'<div class="speech-diagram" role="img" aria-label="Whisper speech to text and gTTS text to speech API"><span>Audio</span><b>⇄</b><span>Flask API<br>Whisper · gTTS</span><b>⇄</b><span>Text</span></div>';
-    return `<article class="project-card ${feature?'feature-card':''}" id="project-${esc(project.id)}"><div class="project-visual">${visual}</div><div class="project-body"><span class="project-tag">${esc(project.tag)}</span><h3>${esc(text(project.title))}</h3><p class="project-description">${esc(text(project.summary))}</p><div class="tags">${project.tools.map(t=>`<span>${esc(t)}</span>`).join('')}</div><p class="outcome">${esc(text(project.highlight))}</p><details><summary>${c.details}</summary><div class="detail-content"><h4>${c.background}</h4><p>${esc(text(project.background))}</p><h4>${c.result}</h4><p>${esc(text(project.result))}</p><h4>${c.contribution}</h4><p>${esc(project.contribution?text(project.contribution):c.teamPending)}</p></div></details>${project.source?`<a class="source-link" href="${esc(project.source)}" target="_blank" rel="noopener noreferrer">${c.source}</a>`:''}</div></article>`;
+    return `<article class="project-card ${feature?'feature-card':''}" id="project-${esc(project.id)}"><div class="project-visual">${visual}</div><div class="project-body"><span class="project-tag">${esc(project.tag)}</span><h3>${esc(text(project.title))}</h3><p class="project-description">${esc(text(project.summary))}</p><div class="tags">${project.tools.map(t=>`<span>${esc(t)}</span>`).join('')}</div>${project.highlight?`<div class="outcome">${project.highlightTitle?`<h4 class="outcome-title">${esc(text(project.highlightTitle))}</h4>`:''}<p>${esc(text(project.highlight))}</p></div>`:''}<details><summary>${c.details}</summary><div class="detail-content">${detailContent(project,c)}</div></details>${project.source?`<a class="source-link" href="${esc(project.source)}" target="_blank" rel="noopener noreferrer">${c.source}</a>`:''}</div></article>`;
   }
   function render(){
     const opened=[...document.querySelectorAll('details[open]')].map(d=>d.closest('article').id);

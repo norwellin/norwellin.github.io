@@ -3,7 +3,7 @@
    source 留空時不顯示原始碼連結；請填你的專案網址，而非第三方套件。
 */
 window.PROFILE = {
-  portrait: '', // './assets/portrait.jpg'
+  portrait: './assets/portrait.jpg',
   cv: '', // './assets/CV.pdf'
   linkedin: 'https://www.linkedin.com/in/chin-jung-lin-987876303/',
   github: 'https://github.com/norwellin',
@@ -42,40 +42,93 @@ window.PROJECTS = [
   {id:'thesis',group:0,tag:'MASTER’S THESIS · 2026',image:'thesis.jpg',
    title:{zh:'網頁 GUI 自動化測試錄製系統',en:'Automated GUI Test Recorder'},
    summary:{zh:'以 MobiWebX 為案例，將複雜的瀏覽器操作轉換為可編輯、可回放的 Playwright 測試腳本。',en:'Turning complex browser interactions into editable, replayable Playwright tests, using MobiWebX as a case study.'},
-   tools:['JavaScript','Chrome Extension','Playwright','DOM'],
+   tools:['JavaScript','Chrome Extension','Playwright','GUI Test Automation'],
    highlight:{zh:'1,199 個 UI 元件測試，支援率 98.2%；14 個整合情境全數回放成功。',en:'98.2% support across 1,199 UI components; successful replay of all 14 integration scenarios.'},
-   background:{zh:'雲端 IDE 的拖放、跨 iframe、多視窗與動態屬性，讓一般測試錄製工具難以產生穩定腳本。',en:'Drag-and-drop, cross-iframe interactions, multiple windows, and dynamic attributes make cloud IDEs challenging for conventional test recorders.'},
-   result:{zh:'功能測試中 1,178 / 1,199 個元件成功錄製與回放；14 / 14 個端對端 GUI 建置情境成功。數值為論文指定測試範圍內的結果。',en:'Recorded and replayed 1,178 of 1,199 components and all 14 end-to-end GUI construction scenarios. These results apply to the evaluation scope documented in the thesis.'},
-   contribution:{zh:'設計並實作 Chrome 擴充功能、拖拉事件重構、動態定位器排序，以及可視化腳本編輯介面，並執行功能與整合驗證。',en:'Designed and implemented the Chrome extension, drag-event reconstruction, dynamic locator ranking, and visual script editor, with feature and integration validation.'},source:'https://github.com/norwellin/TestingRecorder'},
+   background:{zh:'SaaS IDE 包含大量動態元素與複雜互動，使人工測試及腳本維護成本增加；現有測試錄製工具在拖拉、跨頁面與 iframe、動態 ID 處理及視覺化編輯方面仍有不足。',en:'SaaS IDEs contain many dynamic elements and complex interactions, increasing the cost of manual testing and script maintenance. Existing test recorders still have limitations in drag-and-drop, cross-page and iframe interactions, dynamic ID handling, and visual editing.'},
+   result:{zh:'完成一套網頁自動化測試錄製系統，並以 MobiWebX 驗證。支援 1,178／1,199 個 UI 元件，錄製支援率達 98.2%；14 個端對端 GUI 情境全數成功回放。',en:'Completed an automated web test recording system and validated it using MobiWebX. The system supports 1,178 of 1,199 UI components, achieving a recording support rate of 98.2%, with successful replay of all 14 end-to-end GUI scenarios.'},
+   contribution:{zh:'獨立設計與實作 Chrome 擴充套件、跨頁面與 iframe 拖拉機制、動態元素定位策略及視覺化腳本編輯器。',en:'Independently designed and implemented the Chrome extension, cross-page and iframe drag-and-drop mechanisms, dynamic element locator strategies, and visual script editor.'},source:'https://github.com/norwellin/TestingRecorder'},
   {id:'dibuco',group:1,tag:'HFT STUTTGART · TEAM PROJECT',image:'dibuco.jpg',
-   title:{zh:'Dibuco 社群資料平台與 ETL 測試',en:'Dibuco Social Data & ETL Testing'},
-   summary:{zh:'跨國團隊合作建置社群資料整合平台，針對 Discord 與 Telegram 資料管線驗證擷取、轉換與儲存流程。',en:'An international team project integrating social data, with testing of extraction, transformation, and storage pipelines for Discord and Telegram.'},
-   tools:['Python','pytest','ETL','JSON','Docker'],
-   highlight:{zh:'報告記錄 Discord 48 案、Telegram 39 案，單元測試全數通過。',en:'Reports document 48 Discord and 39 Telegram unit tests, all passing.'},
-   background:{zh:'整合分散在多個社群平台的資訊，為 BigData4Biz 的跨平台資料分析提供資料來源。',en:'Integrate information from multiple social platforms to support cross-platform analysis in BigData4Biz.'},
-   result:{zh:'測試涵蓋事件處理、Unicode / emoji、JSON 序列化與檔案儲存。87 案的通過率是報告中的單元測試結果，不代表整個平台的端對端覆蓋率。',en:'Tests cover events, Unicode and emoji, JSON serialization, and file persistence. The 87 passing cases are reported unit tests, not a claim of full-platform end-to-end coverage.'},
-   contribution:{zh:'參與專案測試團隊；Discord 與 Telegram 測試報告列於作品資料中。個人測試案例設計、實作與其他模組的分工待補充。',en:'Participated in the testing team. The portfolio includes Discord and Telegram test reports; individual case design, implementation, and other module responsibilities are to be added.'},source:''},
-  {id:'weather',group:1,tag:'HFT STUTTGART · DATA ENGINEERING',image:'weather.jpg',
-   title:{zh:'即時氣象資料倉儲',en:'Live Weather Data Warehouse'},
-   summary:{zh:'從 OpenWeather 擷取 191 個國家與地區首都的氣象資料，建立 ETL 管線、資料倉儲與分析圖表。',en:'Collecting weather observations for 191 national and territorial capitals through OpenWeather, with an ETL pipeline, warehouse, and analytical dashboard.'},
-   tools:['Python','FastAPI','MySQL','Docker','Matplotlib'],
-   highlight:{zh:'整合容器化資料服務與溫度、降雨、氣壓、日照分析。',en:'Containerized data services with temperature, rainfall, pressure, and daylight analysis.'},
-   background:{zh:'將資料倉儲理論應用於持續更新的氣象觀測，透過分層儲存建立可供歷史分析的資料。',en:'Apply data warehouse concepts to continuously updated observations, storing data in layers for historical analysis.'},
-   result:{zh:'完成資料擷取、staging、基礎資料庫與倉儲流程，搭配 Matplotlib 儀表板呈現查詢結果。',en:'Implemented extraction, staging, base-database and warehouse stages, with a Matplotlib dashboard presenting query results.'},contribution:null,source:''},
+   title:{zh:'Dibuco｜跨平台社群資料整合與 Discord ETL 實作',en:'Dibuco | Cross-platform Social Data Integration & Discord ETL'},
+   summary:{zh:'參與跨國團隊建置社群資料整合平台，整合 Discord、Telegram、Reddit 與 GitHub 資料，並負責 Discord 資料管線的擷取與轉換流程。',en:'Collaborated with an international team to build a social data integration platform spanning Discord, Telegram, Reddit, and GitHub, taking responsibility for extraction and transformation in the Discord data pipeline.'},
+   tools:['Python','Discord API','ETL','JSON','Docker'],
+   highlight:{zh:'建立專屬 Discord Server 與 Bot，透過頻道鏡像及事件監聽擷取社群訊息，並將原始資料轉換為結構化 JSON 檔案。',en:'Created a dedicated Discord server and bot to capture community messages through channel mirroring and event listeners, transforming raw data into structured JSON files.'},
+   sections:[
+     {title:{zh:'背景與目標',en:'Context & objective'},paragraphs:[{zh:'Dibuco 旨在建立跨平台社群資料整合系統，整合分散於 Discord、Telegram、Reddit 與 GitHub 的社群資訊，透過自動化 ETL 流程擷取、轉換及儲存資料，提供 BigData4Biz 平台進行跨平台分析。',en:'Dibuco aims to integrate community information distributed across Discord, Telegram, Reddit, and GitHub. Automated ETL pipelines extract, transform, and store data for cross-platform analysis in BigData4Biz.'}]},
+     {title:{zh:'團隊實作內容',en:'Team implementation'},paragraphs:[{zh:'跨國團隊依據不同社群平台進行分工，開發對應的 ETL 資料管線。',en:'The international team divided responsibilities by social platform and developed the corresponding ETL pipelines.'}],items:[
+       {zh:'資料擷取（Extract）：透過各社群平台的 API 或事件監聽機制，取得社群訊息及相關 metadata。',en:'Extract: Retrieve community messages and related metadata through platform APIs or event listeners.'},
+       {zh:'資料轉換（Transform）：清理與處理原始社群資料，將資料轉換為結構化格式。',en:'Transform: Clean and process raw community data into structured formats.'},
+       {zh:'資料儲存（Load）：將處理後的資料輸出為 JSON 與文字檔案，提供 BigData4Biz 平台進行後續分析。',en:'Load: Export processed data as JSON and text files for subsequent analysis in BigData4Biz.'},
+       {zh:'系統部署：使用 Docker 容器化技術，搭配 GitLab CI/CD 建立自動化建置與部署流程。',en:'Deployment: Containerize services with Docker and automate builds and deployment through GitLab CI/CD.'}
+     ]},
+     {title:{zh:'我的負責項目｜Discord ETL',en:'My responsibilities | Discord ETL'},paragraphs:[{zh:'負責 Discord 資料管線的擷取（Extract）與轉換（Transform）流程。',en:'Responsible for the extraction and transformation stages of the Discord data pipeline.'}],items:[
+       {zh:'建立專屬 Discord Server，作為社群資料擷取環境。',en:'Created a dedicated Discord server as the community data collection environment.'},
+       {zh:'開發並設定 Discord Bot，配置必要權限與事件監聽機制。',en:'Developed and configured a Discord bot with the required permissions and event listeners.'},
+       {zh:'透過頻道鏡像（Channel Mirroring）同步目標社群的公告訊息。',en:'Used channel mirroring to synchronize announcement messages from target communities.'},
+       {zh:'利用 Python 處理 Bot 擷取的訊息內容及相關 metadata。',en:'Processed message content and related metadata captured by the bot using Python.'},
+       {zh:'將原始資料轉換為結構化 JSON 格式，供後續儲存與分析使用。',en:'Transformed raw data into structured JSON for downstream storage and analysis.'}
+     ]},
+     {title:{zh:'技術挑戰與解決方案',en:'Technical challenges & solutions'},paragraphs:[
+       {zh:'由於 Discord Bot 需要目標伺服器的管理權限，無法直接加入所有目標社群擷取資料。',en:'Because adding a Discord bot requires administrative permissions on the target server, the bot could not join every target community directly to collect data.'},
+       {zh:'為解決此限制，我建立專屬 Discord Server，透過頻道鏡像功能同步目標公告頻道，並使用自行建立的 Bot 監聽訊息事件。',en:'To address this limitation, I created a dedicated Discord server, mirrored the target announcement channels, and used my own bot to listen for message events.'},
+       {zh:'此方式能在不直接管理目標伺服器的情況下取得公告內容，但無法完整同步原始頻道的互動與表情反應。',en:'This approach retrieves announcements without directly managing the target server, but cannot fully synchronize interactions and emoji reactions from the original channels.'}
+     ]}
+   ],source:''},
+  {id:'weather',group:1,tag:'HFT STUTTGART · DATA WAREHOUSING',image:'weather.jpg',
+   title:{zh:'即時氣象資料倉儲系統',en:'Live Weather Data Warehouse System'},
+   summary:{zh:'從 OpenWeather API 定期擷取全球 191 個國家與地區首都的氣象資料，建立自動化 ETL 管線與歷史資料倉儲。',en:'Periodically collecting weather data from the OpenWeather API for the capitals of 191 countries and territories worldwide, with an automated ETL pipeline and historical data warehouse.'},
+   tools:['Python','Tkinter','SQL','MySQL'],
+   highlight:{zh:'整合容器化後端服務與圖形化分析介面，呈現氣象趨勢及跨城市數據排名。',en:'Integrated containerized backend services with a graphical analysis interface to present weather trends and cross-city rankings.'},
+   background:{zh:'將資料倉儲理論應用於持續更新的氣象觀測，透過自動化資料擷取、轉換與分層儲存，建立支援歷史分析的氣象資料倉儲。',en:'Applied data warehousing concepts to continuously updated weather observations, using automated extraction, transformation, and layered storage to build a weather data warehouse for historical analysis.'},
+   result:{zh:'小組完成每小時自動更新的 ETL 管線，以及採用星型綱要（Star Schema）的資料倉儲，並透過圖形化介面呈現溫度、降雨、降雪、氣壓與日照時長等分析結果。',en:'The team completed an ETL pipeline with automatic hourly updates and a data warehouse using a star schema, presenting analyses of temperature, rainfall, snowfall, air pressure, and daylight duration through a graphical interface.'},
+   contribution:{zh:'負責使用 Tkinter 開發氣象分析 GUI，串接隊友提供的容器化後端服務，並透過 SQL 查詢取得氣象資料，實作歷史氣象趨勢圖表及跨城市分析報表。',en:'Developed the weather analysis GUI using Tkinter, integrated containerized backend services provided by teammates, and retrieved weather data through SQL queries to implement historical weather charts and cross-city analysis reports.'},source:'https://github.com/jannik-leutgeb/business-intelligence-project'},
   {id:'rental',group:1,tag:'HFT STUTTGART · DATABASE SYSTEMS',image:'wg-1.jpg',
    title:{zh:'WG 合租住宅管理系統',en:'WG Shared Housing Management'},
-   summary:{zh:'以關聯式資料庫管理房客、房間、租約、付款與維修資料，搭配 Java 桌面操作介面。',en:'A relational database for tenants, rooms, contracts, payments, and maintenance, with a Java desktop interface.'},
-   tools:['Java','Swing','MySQL','SQL','JDBC'],
-   highlight:{zh:'從資料模型設計，延伸至查詢與管理介面實作。',en:'From relational modeling to query and management interface implementation.'},
-   background:{zh:'集中管理德國 WG 合租住宅的租務與維護資料，減少資料分散與重複作業。',en:'Centralize rental and maintenance records for shared housing in Germany to reduce fragmented data and repetitive administration.'},
-   result:{zh:'報告包含資料模型、SQL 與 Java 程式，提供房客、付款、房間與維修等管理畫面。',en:'The report includes the data model, SQL, Java code, and interfaces for tenant, payment, room, and maintenance management.'},contribution:null,source:'https://github.com/norwellin/HFT_Database_System'},
+   summary:{zh:'以德國 WG 合租住宅為應用情境，設計並實作關聯式資料庫管理系統，整合房客、房間、租約、付款與維修資料，並開發 Java Swing 桌面管理介面。',en:'Designed and implemented a relational database management system for shared housing (WG) in Germany, integrating tenant, room, contract, payment, and maintenance records with a Java Swing desktop management interface.'},
+   tools:['Java','Java Swing','MySQL','SQL','JDBC'],
+   highlight:{zh:'運用 SQL JOIN、Transactions、Triggers 與 Stored Procedures，實現跨資料表查詢、租務資料管理及相關狀態自動更新。',en:'Used SQL JOINs, transactions, triggers, and stored procedures to implement cross-table queries, rental data management, and automatic updates to related statuses.'},
+   sections:[
+     {title:{zh:'背景與目標',en:'Context & objective'},paragraphs:[
+       {zh:'以德國 WG（Wohngemeinschaft）合租住宅為情境，模擬房東或管理者的日常租務管理需求。',en:'Modeled the everyday rental management needs of landlords and property managers in German shared housing, known as WG (Wohngemeinschaft).'},
+       {zh:'透過關聯式資料庫整合房客、租約、付款及維修資訊，並設計桌面操作介面，實作資料查詢與管理功能。',en:'Integrated tenant, contract, payment, and maintenance information in a relational database and designed a desktop interface for querying and managing records.'}
+     ]},
+     {title:{zh:'技術實作',en:'Technical implementation'},items:[
+       {zh:'資料庫設計：設計 12 張關聯式資料表，運用 Primary Key、Foreign Key 與資料庫正規化建立資料關聯，維護資料完整性。',en:'Database design: Designed 12 relational tables, using primary keys, foreign keys, and database normalization to establish relationships and maintain data integrity.'},
+       {zh:'跨資料表查詢：使用 SQL JOIN 整合房客、房間與付款資訊，支援付款狀態查詢及房間使用情況檢視。',en:'Cross-table queries: Used SQL JOINs to combine tenant, room, and payment information for payment-status queries and room-occupancy views.'},
+       {zh:'交易處理：運用 Transactions 處理租約終止時的跨資料表更新，包括租約狀態、房間狀態及房客與房間的關聯。',en:'Transaction processing: Used transactions to handle updates across tables when terminating a contract, including contract status, room status, and tenant-room relationships.'},
+       {zh:'資料狀態同步：透過 Triggers，在新增租約或變更租約狀態時，自動更新相關房間資料。',en:'Status synchronization: Used triggers to automatically update related room records when contracts are created or their status changes.'},
+       {zh:'資料庫操作封裝：使用 Stored Procedures 封裝房客查詢與刪除操作，並透過 JDBC 整合 MySQL 與 Java Swing 桌面介面。',en:'Database operation encapsulation: Used stored procedures for tenant queries and deletion, and connected MySQL to the Java Swing desktop interface through JDBC.'}
+     ]},
+     {title:{zh:'成果與驗證',en:'Results & evaluation'},paragraphs:[
+       {zh:'完成關聯式資料模型、SQL 程式及 Java 桌面應用程式，提供房客、房間、租約、付款與維修等管理介面。',en:'Completed the relational data model, SQL code, and Java desktop application, providing management interfaces for tenants, rooms, contracts, payments, and maintenance.'},
+       {zh:'透過課堂專案中的模擬資料與操作情境，展示跨資料表查詢、資料新增與更新，以及租約與房間狀態連動等功能。',en:'Demonstrated cross-table queries, record creation and updates, and linked contract and room status changes using simulated data and scenarios in the course project.'}
+     ]},
+     {title:{zh:'我的參與',en:'My contribution'},paragraphs:[
+       {zh:'全程參與專案開發，涵蓋關聯式資料庫設計、Java Swing 前端介面製作，以及 Java 與 JDBC 後端功能實作，完成從資料模型設計到系統功能整合的完整開發流程。',en:'Participated throughout the development process, covering relational database design, Java Swing user interface development, and backend functionality using Java and JDBC, from data modeling through system integration.'}
+     ]}
+   ],source:'https://github.com/norwellin/HFT_Database_System'},
   {id:'genetic',group:1,tag:'HFT STUTTGART · COMPUTATIONAL INTELLIGENCE',image:'genetic.jpg',
    title:{zh:'基因演算法協商代理',en:'Genetic Algorithm Mediator'},
-   summary:{zh:'以基因演算法搜尋生產排程，由中介代理協調供應商與客戶的成本目標。',en:'A genetic algorithm for production scheduling, using a mediator to negotiate supplier and customer cost objectives.'},
-   tools:['Java','Genetic Algorithm','Multi-agent Negotiation'],
-   highlight:{zh:'比較 27 組選擇、交配與突變策略組合。',en:'Compared 27 combinations of selection, crossover, and mutation strategies.'},
-   background:{zh:'雙方代理各自尋求較低生產成本，由中介代理產生候選合約並依投票與適應度更新。',en:'Two agents pursue lower production costs while the mediator generates proposals and updates them using votes and fitness scores.'},
-   result:{zh:'以 10、100、1,000 回合比較策略；簡報指出 Temperature Selection、Cycle Crossover 與 Displacement Mutation 在 1,000 回合設定下表現最佳。',en:'Compared strategies over 10, 100, and 1,000 rounds. The presentation identifies temperature selection, cycle crossover, and displacement mutation as the best combination in its 1,000-round experiments.'},contribution:null,source:''},
+   summary:{zh:'透過基因演算法最佳化生產順序，並利用中介代理協調供應商與客戶的成本目標。',en:'Optimizing production sequences with a genetic algorithm and using a mediator agent to coordinate supplier and customer cost objectives.'},
+   tools:['Java','Genetic Algorithm','Multi-Agent Negotiation'],
+   highlightTitle:{zh:'27 組演算法策略比較',en:'Comparing 27 Algorithm Strategy Combinations'},
+   highlight:{zh:'3 種選擇 × 3 種交配 × 3 種突變策略',en:'3 selection × 3 crossover × 3 mutation strategies'},
+   sections:[
+     {title:{zh:'背景與目標',en:'Context & objective'},paragraphs:[
+       {zh:'建立基於基因演算法的自動化協商系統。供應商與客戶代理各自尋求較低的生產成本，中介代理則產生候選合約，透過雙方的成本評估與投票計算適應度，並利用選擇、交配及突變操作，持續最佳化候選生產順序。',en:'Developed an automated negotiation system based on a genetic algorithm. Supplier and customer agents each seek lower production costs, while a mediator generates candidate contracts, calculates fitness from both parties’ cost evaluations and votes, and continuously optimizes candidate production sequences through selection, crossover, and mutation.'}
+     ]},
+     {title:{zh:'成果與驗證',en:'Results & evaluation'},paragraphs:[
+       {zh:'比較 27 組選擇、交配與突變策略，並針對 10、100 及 1,000 回合的設定進行實驗。',en:'Compared 27 combinations of selection, crossover, and mutation strategies in experiments configured for 10, 100, and 1,000 rounds.'},
+       {zh:'實驗結果顯示，在本專案的 1,000 回合設定下，Temperature Selection、Cycle Crossover 與 Displacement Mutation 的組合呈現最佳整體表現。',en:'Under this project’s 1,000-round configuration, the combination of Temperature Selection, Cycle Crossover, and Displacement Mutation showed the best overall performance.'},
+       {zh:'透過成本散佈圖視覺化不同策略的實驗結果，輔助分析供應商與客戶之間的成本權衡，並辨識近似 Pareto 最佳解。',en:'Visualized the experimental results using cost scatter plots to analyze supplier–customer cost trade-offs and identify approximately Pareto-optimal solutions.'}
+     ]},
+     {title:{zh:'我的參與',en:'My contribution'},paragraphs:[
+       {zh:'參與小組專案，主要負責基因演算法中的交配與突變操作實作，以及實驗結果的視覺化。',en:'Contributed to the team project primarily by implementing crossover and mutation operations in the genetic algorithm and visualizing experimental results.'}
+     ],items:[
+       {zh:'交配演算法（Crossover）：實作 Order、Cycle 與 Position-Based Crossover，透過不同的基因重組方式產生新的候選合約。',en:'Crossover: Implemented Order, Cycle, and Position-Based Crossover to generate new candidate contracts through different gene recombination methods.'},
+       {zh:'突變演算法（Mutation）：實作 Scramble、Inverse 與 Displacement Mutation，透過調整基因排列增加候選解的多樣性。',en:'Mutation: Implemented Scramble, Inverse, and Displacement Mutation to increase candidate diversity by rearranging genes.'},
+       {zh:'結果視覺化（Data Visualization）：將不同演算法策略的實驗結果繪製為成本散佈圖，協助比較供應商與客戶的成本分布及最佳化表現。',en:'Data Visualization: Created cost scatter plots of experimental results across algorithm strategies to compare supplier and customer cost distributions and optimization performance.'}
+     ]}
+   ],source:'https://github.com/Rdm-Nico/CI_Project/tree/main'},
   {id:'floorplan',group:2,tag:'COMPUTER VISION · OCR',image:'doc-0-2.jpg',
    title:{zh:'平面圖輔助辨識系統',en:'Floor Plan Recognition Assistant'},
    summary:{zh:'運用影像處理與 OCR 辨識超商平面圖中的貨架類別與料號，保留原圖位置供結果標示。',en:'Image processing and OCR for shelf categories and part numbers in store floor plans, preserving coordinates for annotated results.'},
